@@ -1,0 +1,56 @@
+<head>
+  <title>RMS</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      {{> header}}
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        {{> selector}}
+      </div>
+      <div class="span8">
+        {{> results}}
+      </div>
+    </div>
+  </div>
+</body>
+
+<template name="header">
+  <h1>Remote Monitoring System</h1>
+  <p class="lead">An easy way for you to view and interact with data from all of your power plants!</p>
+</template>
+
+<template name="selector">
+  <form>
+  <fieldset>
+    <legend>Select Data</legend>
+    <label>Timespan:</label>
+    <input type="date" class="indent input-medium"><input type="time" class="span5" value="00:00">
+    <input type="date" class="indent input-medium"><input type="time" class="span5" value="23:59">
+    <label>Generator:</label>
+    <!-- <input type="text" class="indent" placeholder="Generator #"> -->
+    <select class="indent input-small">
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+    </select>
+    <label>Select what you want to graph:</label>
+    <label class="checkbox indent"><input type="checkbox" id="voltage" value="voltage"> Voltage</label>
+    <label class="checkbox indent"><input type="checkbox" id="current" value="current"> Current</label>
+    <label class="checkbox indent"><input type="checkbox" id="power" value="power"> Power</label>
+    <label class="checkbox indent"><input type="checkbox" id="frequency" value="frequency"> Frequency</label>
+    <br/>
+    <input type="button" id="graph-button" class="btn btn-primary" value="Graph"/> 
+    <input type="button" id="excel-button" class="btn" value="Download for Excel" />
+    <input type="button" id="access-button" class="btn" value="Download for Access" />
+  </fieldset>
+</form>
+</template>
+
+<template name="results">
+  <img src="example-graph.jpg" alt="it's a pretty graph" />
+</template>
