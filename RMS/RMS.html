@@ -28,16 +28,27 @@
   <fieldset>
     <legend>Select Data</legend>
     <label>Timespan:</label>
-    <input type="date" class="indent input-medium"><input type="time" class="span5" value="00:00">
-    <input type="date" class="indent input-medium"><input type="time" class="span5" value="23:59">
-    <label>Generator:</label>
-    <!-- <input type="text" class="indent" placeholder="Generator #"> -->
-    <select class="indent input-small">
-      <option>0</option>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-    </select>
+    <input type="date" id="start-date" class="indent input-medium" value="2012-03-13"><input type="time" id="start-time" class="span5" value="00:00">
+    <input type="date" id="end-date" class="indent input-medium" value="2012-04-13"><input type="time" id="end-time" class="span5" value="23:59">
+    <div class="row-fluid">
+      <div class="span5">
+        <label>Generator:</label>
+        <select id="generator-select" class="indent input-small">
+          {{#each generators}}
+            <option>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="span2"><br/>or</div>
+      <div class="span5">
+        <label>Region:</label>
+        <select id="region-select" class="indent input-small">
+          {{#each regions}}
+            <option>{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
     <label>Select what you want to graph:</label>
     <label class="checkbox indent"><input type="checkbox" id="voltage" value="voltage"> Voltage</label>
     <label class="checkbox indent"><input type="checkbox" id="current" value="current"> Current</label>
@@ -52,5 +63,10 @@
 </template>
 
 <template name="results">
-  <img src="example-graph.jpg" alt="it's a pretty graph" />
+  <!-- <img src="example-graph.jpg" alt="it's a pretty graph" /> -->
+  <!-- <canvas id="graph" width="800px" height="700px"></canvas> -->
+  <div id="axis0"></div>
+  <div id="axis1"></div>
+  <div id="chart"></div>
+  <div id="legend" class="ui-widget-content"></div>
 </template>

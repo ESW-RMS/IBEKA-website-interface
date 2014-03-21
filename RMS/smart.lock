@@ -1,0 +1,32 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "chartjs": {},
+      "rickshaw": {},
+      "jquery-ui": {}
+    },
+    "packages": {
+      "chartjs": {
+        "git": "https://github.com/donskifarrell/meteor-chartjs.git",
+        "tag": "v0.0.4",
+        "commit": "9d2adcd1de3728c8227e8eb7da0dcb2e0df21d0b"
+      },
+      "rickshaw": {
+        "git": "https://github.com/bitIO/meteor-rickshaw.git",
+        "tag": "v0.0.2",
+        "commit": "3387214eb34482979d65ddde99bad0cf59e5cade"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
+      },
+      "d3js-package": {
+        "git": "https://github.com/acidsound/d3js-package.git",
+        "tag": "v0.5.1",
+        "commit": "7d3eda4fca00782624ef8e99db84488711ba17e3"
+      }
+    }
+  }
+}

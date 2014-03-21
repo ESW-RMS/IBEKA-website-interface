@@ -1,3 +1,43 @@
 /* CSS declarations go here */
 
 .indent {margin-left: 15px;}
+
+#graph {
+	width: 100%;
+	height: 100%;
+}
+
+#axis0 {
+	position: absolute;
+	height: 800px;
+	width: 35px;
+}
+
+#axis1 {
+	position: absolute;
+	right: 10px;
+	height: 800px;
+	width: 35px;
+}
+
+#chart {
+	left: calc(33% + 56px);
+	width: calc(67% - 99px);
+	position: absolute;
+}
+
+#legend {
+    display: inline-block;
+    left: 30px;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+    opacity: 0.75;
+}
+
+.y_axis {
+	padding-bottom: 10px;
+}
+
+#legend:hover {
+	opacity: 1;
+}
