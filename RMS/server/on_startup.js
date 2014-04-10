@@ -1,3 +1,27 @@
+twilio = Twilio('AC6ded8d9494ea54818dd4877cacf1fe31', 'd32eb12931887162aa903f034a9dbc30');
+
+var mostRecentDate = new Date("Mon, 15 Aug 2005 15:52:01 +0000");
+setInterval(Meteor.bindEnvironment(function checkForSms() {
+  twilio.listSms({
+    // 'from':'+14147373103',
+    'dateSent>': mostRecentDate,
+  }, Meteor.bindEnvironment(function (err, responseData) {
+    responseData.smsMessages.forEach(function(message) {
+      if (message.dateCreated.getTime() > mostRecentDate.getTime()) {
+        mostRecentDate.setTime(message.dateCreated.getTime() + 1000);
+      }
+      console.log('Message sent on: '+ message.dateCreated);
+      console.log(message.body);
+      var values = message.body.split(" ");
+      if (values[0].length == 1) {
+        RMSData.insert({timestamp: message.dateCreated, gen_num: parseInt(values[0]), region: parseInt(values[1]), voltage: parseFloat(values[2]), current: parseFloat(values[3]), power: parseFloat(values[4]), frequency: parseFloat(values[5])});
+      }
+    });
+  }));
+}), 1000);
+
+
+
 
 Meteor.startup(function () {
   RMSData.remove({});

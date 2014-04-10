@@ -1,7 +1,10 @@
 {
   "packages": {
     "chartjs": {},
-    "rickshaw": {},
-    "jquery-ui": {}
+    "jquery-ui": {},
+    "moment": {},
+    "twilio-meteor": {},
+    "twilio": {},
+    "rickshaw": {}
   }
 }

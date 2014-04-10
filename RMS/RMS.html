@@ -49,15 +49,15 @@
         </select>
       </div>
     </div>
-    <label>Select what you want to graph:</label>
+    <label>Select what you want to graph (no more than 2):</label>
     <label class="checkbox indent"><input type="checkbox" id="voltage" value="voltage"> Voltage</label>
     <label class="checkbox indent"><input type="checkbox" id="current" value="current"> Current</label>
     <label class="checkbox indent"><input type="checkbox" id="power" value="power"> Power</label>
     <label class="checkbox indent"><input type="checkbox" id="frequency" value="frequency"> Frequency</label>
     <br/>
     <input type="button" id="graph-button" class="btn btn-primary" value="Graph"/> 
-    <input type="button" id="excel-button" class="btn" value="Download for Excel" />
-    <input type="button" id="access-button" class="btn" value="Download for Access" />
+    <input type="button" id="table-button" class="btn" value="Show Data Table" />
+    <input type="button" id="csv-button" class="btn" value="Download as CSV" />
   </fieldset>
 </form>
 </template>
@@ -69,4 +69,5 @@
   <div id="axis1"></div>
   <div id="chart"></div>
   <div id="legend" class="ui-widget-content"></div>
+  <div id="results-table"></div>
 </template>

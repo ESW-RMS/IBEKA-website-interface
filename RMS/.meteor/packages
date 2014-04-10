@@ -6,9 +6,11 @@
 standard-app-packages
 autopublish
 insecure
-preserve-inputs
 bootstrap
 chartjs
-rickshaw
 d3
 jquery-ui
+moment
+twilio-meteor
+twilio
+rickshaw
