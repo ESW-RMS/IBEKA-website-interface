@@ -1,28 +1,42 @@
 twilio = Twilio('AC6ded8d9494ea54818dd4877cacf1fe31', 'd32eb12931887162aa903f034a9dbc30');
 
+/** 
+ * SMS Receiving Implemented with Twilio (prototype). 
+ * When we stopped working on this we were attempting to receive the 
+ * HTTP requests that were sent from the RaspberryPi (SMS -> HTML request)
+ * on the website server in order to turn them into database records (containing
+ * the data sent in the text message). 
+ * 
+ * In implementing this, you should look up IronRouter. This is the framework we were
+ * looking into when we stopped working on the project. We starting playing with IronRouter
+ * but things are not working. You are probably better uninstalling it, before attempting to 
+ * use it again with the project.
+ */
 var mostRecentDate = new Date("Mon, 15 Aug 2005 15:52:01 +0000");
 setInterval(Meteor.bindEnvironment(function checkForSms() {
-  twilio.listSms({
-    // 'from':'+14147373103',
-    'dateSent>': mostRecentDate,
-  }, Meteor.bindEnvironment(function (err, responseData) {
-    responseData.smsMessages.forEach(function(message) {
-      if (message.dateCreated.getTime() > mostRecentDate.getTime()) {
-        mostRecentDate.setTime(message.dateCreated.getTime() + 1000);
-      }
-      console.log('Message sent on: '+ message.dateCreated);
-      console.log(message.body);
-      var values = message.body.split(" ");
-      if (values[0].length == 1) {
-        RMSData.insert({timestamp: message.dateCreated, gen_num: parseInt(values[0]), region: parseInt(values[1]), voltage: parseFloat(values[2]), current: parseFloat(values[3]), power: parseFloat(values[4]), frequency: parseFloat(values[5])});
-      }
-    });
-  }));
+  /* Check for POST requests to the route smses */
+
+
+  // twilio.listSms({
+  //   // 'from':'+14147373103',
+  //   'dateSent>': mostRecentDate,
+  // }, Meteor.bindEnvironment(function (err, responseData) {
+  //   responseData.smsMessages.forEach(function(message) {
+  //     if (message.dateCreated.getTime() > mostRecentDate.getTime()) {
+  //       mostRecentDate.setTime(message.dateCreated.getTime() + 1000);
+  //     }
+  //     console.log('Message sent on: '+ message.dateCreated);
+  //     console.log(message.body);
+  //     var values = message.body.split(" ");
+  //     if (values[0].length == 1) {
+  //       RMSData.insert({timestamp: message.dateCreated, gen_num: parseInt(values[0]), region: parseInt(values[1]), voltage: parseFloat(values[2]), current: parseFloat(values[3]), power: parseFloat(values[4]), frequency: parseFloat(values[5])});
+  //     }
+  //   });
+  // }));
 }), 1000);
 
 
-
-
+/* Intialize with example data */
 Meteor.startup(function () {
   RMSData.remove({});
   HACKERS.remove({});
@@ -1065,7 +1079,7 @@ Meteor.startup(function () {
     RMSData.insert({timestamp: new Date("2013-10-13T23:42:54.341Z"), gen_num: 0, region: 0, voltage: 0.48530196253108104, current: -0.8743466161445821, power: -0.42432212874737546, frequency: 1.05});
     RMSData.insert({timestamp: new Date("2013-10-14T23:42:54.341Z"), gen_num: 0, region: 0, voltage: 0.29936312297335804, current: -0.9541392564000488, power: -0.2856341075473962, frequency: 0.95});
     RMSData.insert({timestamp: new Date("2013-10-15T23:42:54.341Z"), gen_num: 0, region: 0, voltage: 0.10116832198743228, current: -0.9948693233918952, power: -0.10064926004433014, frequency: 1.05});
-    RMSData.insert({timestamp: new Date("2013-10-16T23:42:54.341Z"), gen_num: 0, region: 0, voltage: -0.10116832198743204, current: -0.9948693233918952, power: 0.1006492600443299, frequency: 0.95});
+    RMSData.insert({timestamp: new D   ate("2013-10-16T23:42:54.341Z"), gen_num: 0, region: 0, voltage: -0.10116832198743204, current: -0.9948693233918952, power: 0.1006492600443299, frequency: 0.95});
     RMSData.insert({timestamp: new Date("2013-10-17T23:42:54.341Z"), gen_num: 0, region: 0, voltage: -0.2993631229733574, current: -0.954139256400049, power: 0.28563410754739565, frequency: 0.95});
     RMSData.insert({timestamp: new Date("2013-10-18T23:42:54.341Z"), gen_num: 0, region: 0, voltage: -0.4853019625310812, current: -0.874346616144582, power: 0.42432212874737557, frequency: 1.05});
     RMSData.insert({timestamp: new Date("2013-10-19T23:42:54.341Z"), gen_num: 0, region: 0, voltage: -0.651372482722222, current: -0.7587581226927911, power: 0.4942341621640557, frequency: 1.05});

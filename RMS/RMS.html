@@ -33,16 +33,16 @@
     <div class="row-fluid">
       <div class="span5">
         <label>Generator:</label>
-        <select id="generator-select" class="indent input-small">
+        <select id="generator-select" class="indent input-medium">
           {{#each generators}}
             <option>{{this}}</option>
           {{/each}}
         </select>
       </div>
-      <div class="span2"><br/>or</div>
+      <div class="span1"><br/>or</div>
       <div class="span5">
         <label>Region:</label>
-        <select id="region-select" class="indent input-small">
+        <select id="region-select" class="indent input-medium">
           {{#each regions}}
             <option>{{this}}</option>
           {{/each}}
@@ -57,7 +57,8 @@
     <br/>
     <input type="button" id="graph-button" class="btn btn-primary" value="Graph"/> 
     <input type="button" id="table-button" class="btn" value="Show Data Table" />
-    <input type="button" id="csv-button" class="btn" value="Download as CSV" />
+    <!-- <input type="button" id="csv-button" class="btn" value="Download as CSV" /> -->
+    <a href="#" id="csv-button" class="export">Download as CSV</a>
   </fieldset>
 </form>
 </template>
@@ -65,9 +66,44 @@
 <template name="results">
   <!-- <img src="example-graph.jpg" alt="it's a pretty graph" /> -->
   <!-- <canvas id="graph" width="800px" height="700px"></canvas> -->
-  <div id="axis0"></div>
-  <div id="axis1"></div>
-  <div id="chart"></div>
-  <div id="legend" class="ui-widget-content"></div>
-  <div id="results-table"></div>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto">
+</div>
+
+<table id="data_table" class="table table-striped table-bordered table-condensed">
+  <tbody>
+    <tr id="header_row">
+      <td>Timestamp</td>
+      <td>Generator</td>
+      <td>Region</td>
+      {{#each checked}}
+        <td>{{this}}</td>
+      {{/each}}
+    </tr>
+    {{#each results}}
+      <tr>
+        <td>{{timestamp}}</td>
+        <td>{{gen_num}}</td>
+        <td>{{region}}</td>
+        {{#if isVoltage}}
+          <td>{{voltage}}</td>
+        {{/if}}
+        {{#if isCurrent}}
+          <td>{{current}}</td>
+        {{/if}}
+        {{#if isPower}}
+          <td>{{power}}</td>
+        {{/if}}
+        {{#if isFrequency}}
+          <td>{{frequency}}</td>
+        {{/if}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
 </template>
+
+
+
+
+
